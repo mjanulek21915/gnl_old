@@ -27,20 +27,10 @@ void				gnl_bzero(char *str, int len)
 int					gnl_init(t_buffer *buffer)
 {
 	int i;
-	int j;
 
 	i = 0;
-	while (i < FOPEN_MAX)
-	{
-		j = 0;
+	while (i++ < OPEN_MAX)
 		gnl_bzero(((buffer->buffer)[i]), BUFFER_SIZE + 1);
-		while (j < BUFFER_SIZE)
-		{
-			(buffer->buffer)[i][j] = 0;
-			j++;
-		}
-		i++;
-	}
 	return (0);
 }
 
@@ -52,4 +42,14 @@ int					gnl_strlen(char *str)
 	while (str[i])
 		i++;
 	return (i);
+}
+
+int					gnl_decide(int i)
+{
+	if (i == 0)
+		return (0);
+	if (i == -1)
+		return (-1);
+	else
+		return (1);
 }

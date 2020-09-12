@@ -89,10 +89,7 @@ static int				gnl_read(t_buffer *buffer, char **line, int fd)
 				gnl_strcpy(ptr, (buffer->buffer)[fd], 0);
 		}
 	}
-	if (rst == 0)
-		return (0);
-	else
-		return (1);
+	return (gnl_decide(rst));
 }
 
 int						get_next_line(int fd, char **line)
@@ -100,7 +97,7 @@ int						get_next_line(int fd, char **line)
 	static int			init = 0;
 	static t_buffer		buffer;
 
-	if (!line || fd < 0 || BUFFER_SIZE < 1)
+	if (!line || fd < 0 || BUFFER_SIZE < 1 || fd >= OPEN_MAX)
 		return (-1);
 	*line = malloc(sizeof(char));
 	**line = 0;
