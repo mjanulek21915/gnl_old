@@ -40,7 +40,7 @@ int main(int ac, char **av)
 
 	while (k < ac)
 	{
-		printf("%s\n", av[k]);
+		printf("%s\n", av[k++]);
 	}
 
 	while (i < 12)

@@ -28,7 +28,7 @@ do
 		echo "iteration count = ${iteration_count}" >>sanitary_log
 		oldIFS=$IFS
 		IFS=$'\n'
-		./a.out $iteration count 2>>sanitary_log
+		./a.out $iteration_count 2>>sanitary_log
 		valgrind_temp=$(valgrind --leak-check=full ./a.out $iteration_count 2>&1)
 		for line in $valgrind_temp
 		do

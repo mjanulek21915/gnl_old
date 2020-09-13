@@ -89,7 +89,7 @@ static int				gnl_read(t_buffer *buffer, char **line, int fd)
 				gnl_strcpy(ptr, (buffer->buffer)[fd], 0);
 		}
 	}
-	return (gnl_decide(rst));
+	return (gnl_decide(rst, *line));
 }
 
 int						get_next_line(int fd, char **line)

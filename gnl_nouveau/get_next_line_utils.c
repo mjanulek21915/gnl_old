@@ -29,8 +29,8 @@ int					gnl_init(t_buffer *buffer)
 	int i;
 
 	i = 0;
-	while (i++ < OPEN_MAX)
-		gnl_bzero(((buffer->buffer)[i]), BUFFER_SIZE + 1);
+	while (i < OPEN_MAX)
+		gnl_bzero(((buffer->buffer)[i++]), BUFFER_SIZE + 1);
 	return (0);
 }
 
@@ -44,9 +44,9 @@ int					gnl_strlen(char *str)
 	return (i);
 }
 
-int					gnl_decide(int i)
+int					gnl_decide(int i, char *line)
 {
-	if (i == 0)
+	if (i == 0 && !*line)
 		return (0);
 	if (i == -1)
 		return (-1);
